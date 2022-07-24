@@ -1,0 +1,433 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Kleros Evidence Provider</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/metisMenu.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/slicknav.min.css">
+    <!-- amchart css -->
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <!-- others css -->
+    <link rel="stylesheet" href="assets/css/typography.css">
+    <link rel="stylesheet" href="assets/css/default-css.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- modernizr css -->
+    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+
+        <!-- Start datatable css -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
+
+    <!--IPFS Web 3 -->
+    <script src="https://unpkg.com/ipfs-http-client-lite/dist/index.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ethjs@0.3.4/dist/ethjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/object-hash@3.0.0/dist/object_hash.min.js"></script>
+</head>
+
+<body>
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- preloader area start -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <!-- preloader area end -->
+    <!-- page container area start -->
+    <div class="page-container">
+        <!-- sidebar menu area start -->
+        <div class="sidebar-menu">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <a href="index.html"><img src="assets/images/icon/logo.png" alt="logo"></a>
+                </div>
+            </div>
+            <div class="main-menu">
+                <div class="menu-inner">
+                    <nav>
+                        <ul class="metismenu" id="menu">
+                            <li>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
+                                <ul class="collapse">
+                                    <li><a href="index.html">KEP dashboard</a></li>
+                                    
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- sidebar menu area end -->
+        <!-- main content area start -->
+        <div class="main-content">
+            <!-- header area start -->
+            <div class="header-area">
+                <div class="row align-items-center">
+                    <!-- nav and search button -->
+                    <div class="col-md-6 col-sm-8 clearfix">
+                        <div class="nav-btn pull-left">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="search-box pull-left">
+                            <form action="#">
+                                <input type="text" name="search" placeholder="Search..." required>
+                                <i class="ti-search"></i>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- profile info & task notification -->
+                    <div class="col-md-6 col-sm-4 clearfix">
+                        <ul class="notification-area pull-right">
+                            <li><span id="show_wallet"></span></li>
+                            <li><a href="#" id="connect_web_3" class="btn btn-primary">Connect web 3</a></li>   
+                            <li id="full-view"><i class="ti-fullscreen"></i></li>
+                            <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
+                                              
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- header area end -->
+            <!-- page title area start -->
+            <div class="page-title-area">
+                <div class="row align-items-center">
+                    <div class="col-sm-6">
+                        <div class="breadcrumbs-area clearfix">
+                            <h4 class="page-title pull-left">KEP Dashboard</h4>                          
+                        </div>
+                    </div>
+                    <div class="col-sm-6 clearfix">
+                        <a href="#" id="create_locker_button" class="btn btn-primary">Get Locker</a>
+                        <span id="locker_address_display"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- page title area end -->
+            <div class="main-content-inner">
+                <div class="row">
+                    <div class="col-lg-6 col-ml-12">
+                        <div class="row">
+                            <!-- Textual inputs start -->
+                            <div class="col-12 mt-5">
+                                <div class="card">
+                                    <div class="card-body">    
+                                        <div class="data-tables datatable-primary">        
+                                            <table id="dataTable2" class="text-center">
+                                                <thead class="text-capitalize">
+                                                    <tr>
+                                                        <th>Title</th>
+                                                        <th></th>
+                                                        
+                                                        <th>Submitter</th>
+                                                        <th>Tags</th>
+                                                        <th>Case Count</th>
+                                                        <th>Submit Date</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody >
+                                                    <tr>
+                                                        
+                                                        <td>Airi Satou</td>
+                                                        <td>   <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" id="o1">
+                                                            <label class="custom-control-label" for="o1"></label>
+                                                        
+                                                        </div>
+                                                        </td>
+                                                        <td>Accountant</td>
+                                                        <td>Tokyo</td>
+                                                        <td>33</td>
+                                                        <td>2008/11/28</td>
+                                                        
+                                                        <td>$162,700</td>
+                                                    </tr>
+                                                    <tr>
+                                                        
+                                                        <td>Angelica Ramos</td>
+                                                        <td>   <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" id="o2">
+                                                            <label class="custom-control-label" for="o2"></label>
+                                                        
+                                                        </div>
+                                                        </td>
+                                                        <td>Chief Executive Officer (CEO)</td>
+                                                        <td>London</td>
+                                                        <td>47</td>
+                                                        <td>2009/10/09</td>
+                                                        <td>$1,200,000</td>
+                                                    </tr>
+                                                    <tr>
+                                                    
+                                                        <td>Ashton Cox</td>
+                                                        <td>   <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" id="o3">
+                                                            <label class="custom-control-label" for="o3"></label>
+                                                        
+                                                        </div>
+                                                        </td>
+                                                        <td>Junior Technical Author</td>
+                                                        <td>San Francisco</td>
+                                                        <td>66</td>
+                                                        <td>2009/01/12</td>
+                                                        <td>$86,000</td>
+                                                    </tr>
+                                                    <tr>
+                                                
+                                                        <td>Bradley Greer</td>
+                                                        <td>   <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" id="o4">
+                                                            <label class="custom-control-label" for="o4"></label>
+                                                        
+                                                        </div>
+                                                        </td>
+                                                        <td>Software Engineer</td>
+                                                        <td>London</td>
+                                                        <td>41</td>
+                                                        <td>2012/10/13</td>
+                                                        <td>$132,000</td>
+                                                    </tr>
+                                                    <tr>
+                                                    
+                                                        <td>Brenden Wagner</td>
+                                                        <td>   <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" id="o5">
+                                                            <label class="custom-control-label" for="o5"></label>
+                                                        
+                                                        </div>
+                                                        </td>
+                                                        <td>Software Engineer</td>
+                                                        <td>San Francisco</td>
+                                                        <td>28</td>
+                                                        <td>2011/06/07</td>
+                                                        <td>$206,850</td>
+                                                    </tr>
+                                                    <tr>
+                                                        
+                                                        <td>Caesar Vance</td>
+                                                        <td>   <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" id="o6">
+                                                            <label class="custom-control-label" for="o6"></label>
+                                                            
+                                                        </div>
+                                                        </td>
+                                                        <td>Pre-Sales Support</td>
+                                                        <td>New York</td>
+                                                        <td>29</td>
+                                                        <td>2011/12/12</td>
+                                                        <td>$106,450</td>
+                                                    </tr>
+                                                
+                                                </tbody>
+                                            </table>    
+                                        
+                                            <div class="form-group">
+                                                <label for="metaEvidenceId">Enter MetaEvidence Id</label>
+                                                <input type="text" class="form-control" id="metaEvidenceId"  placeholder="Enter meta evidence id">                                            
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="party">Enter Party</label>
+                                                <input type="text" class="form-control" id="dispute_party"  placeholder="Enter party">                                            
+                                            </div>
+                                            <a href="#" id="submit_to_dispute" class="btn btn-danger">Submit to Dispute</a> 
+                                        </div>
+                                    </div>                                   
+                                </div>
+                            </div>
+                         
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-ml-12">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card mt-5">
+                                    <div class="card-body">
+                                        <h4 class="header-title">Add Evidence</h4>
+                                        <form action="#">
+                                            <div class="form-group">
+                                                <label for="submitter">Enter Submitter</label>
+                                                <input type="text" class="form-control" id="submitter"  placeholder="Enter submitter name">
+                                                
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="evidence_title">Evidence Title</label>
+                                                <input type="text" class="form-control" id="evidence_title" placeholder="Enter evidence title">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="evidence_short_description">Evidence Short Description</label>
+                                                <input type="text" class="form-control" id="evidence_short_description" placeholder="Enter evidence short description">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="evidence_search_terms">Evidence Search Terms</label>
+                                                <input type="text" class="form-control" id="evidence_search_terms" placeholder="Enter evidence search terms">
+                                            </div>
+                                            <div class="input-group mb-3">
+                                                Upload Evidence
+                                                <div class="custom-file">                                                    
+                                                    <br/>
+                                                    <input type="file" class="btn btn-outline-secondary" id="evidence_upload_file">                                                    
+                                                </div>
+                                            </div>
+                                            <button type="submit" id="add_evidence_button" class="btn btn-primary mt-4 pr-4 pl-4">Add Evidence</button>     
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- main content area end -->
+        <!-- footer area start-->
+        <footer>
+            <div class="footer-area">
+                <p>&copy; 2022 Block <font color="red">&#9733;</font>Logic. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
+            </div>
+        </footer>
+        <!-- footer area end-->
+    </div>
+    <!-- page container area end -->
+   
+    <!-- jquery latest version -->
+    <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
+    <!-- bootstrap 4 js -->
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/metisMenu.min.js"></script>
+    <script src="assets/js/jquery.slimscroll.min.js"></script>
+    <script src="assets/js/jquery.slicknav.min.js"></script>
+
+    <!-- Start datatable js -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+
+    <!-- others plugins -->
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/autoconnect.js"></script>
+    <script> 
+        const createLockerButton = ge("create_locker_button");
+        const lockerAddressDisplay = ge("locker_address_display");
+        const evidenceTable = ge("datatable2");
+        const metaEvidenceId = ge("metaEvidenceId"); 
+        const disputeParty = ge("dispute_party");
+        const submitToDisputButton = ge("submit_to_dispute");
+
+        const evidenceSubmitter = ge("submitter");
+        const evidenceTitle = ge("evidence_title");
+        const evidenceShortDescription = ge("evidence_short_description");
+        const evidenceSearchTerms = ge("evidence_search_terms");
+        const evidenceUploadFile = ge("evidence_upload_file");
+        const addEvidenceButton = ge("add_evidence_button"); 
+        
+        var iKerlosEvidenceProviderContract;
+        var iKerlosEvicenceProviderAddress
+        var iEvidenceLockerContract; 
+        var iEvidenceLockerAddress; 
+
+        async function  configureCoreContracts() {
+            iKerlosEvidenceProviderContract = new web3.eth.Contract(iKerlosEvidenceProviderAbi, iKerlosEvicenceProviderAddress);
+            iKerlosEvidenceProviderContract.methods.getLocker().call({from : account})
+            .then(function(response){
+                console.log(response);
+                iEvidenceLockerAddress = response;
+                lockerAddressDisplay.innerHTML = "Evidence Locker Address: "+ iEvidenceLockerAddress; 
+                iEvidenceLockerContract = new web3.eth.Contract(iEvidenceLockerAbi, iEvidenceLockerAddress);                
+            })
+            .catch(function(err){
+                console.log(err);
+                lockerAddressDisplay.innerHTML = "Create Locker to Begin";
+            });
+        }
+
+        function addEvidence() { 
+            //upload file to ipfs 
+            console.log(evidenceUploadFile.files[0]);
+            ipfs.add(evidenceUploadFile.files[0])
+                    .then(function(res){
+                            console.log(res);
+                            //build EIP1497 compliant evidence json
+                            var ipfsHash = res; 
+                            var eip1497 = buildEIP1497(ipfsHash, evidenceUploadFile.files[0].name, evidenceUploadFile.files[0].type, evidenceShortDescription.value);
+                            var str = JSON.stringify(eip1497);
+                            console.log(str);
+                            ipfs.add(str) 
+                            .then(function(res){
+                                    console.log(res); 
+                                    // submit to EVM 
+
+                            })
+                            .catch(function(err){
+                                    console.log(err);
+                            });
+                    })
+                    .catch(function(err){
+                        console.log(err);
+                    });
+            // submit to EVM 
+
+            // refresh table; 
+        }
+
+        function buildEIP1497(ipfsHash, name, extension, shortDescription,) { 
+            var eip1497 = {};
+
+            eip1497.fileURI = "/ipfs/"+ipfsHash; 
+            eip1497.fileHash = ipfsHash; 
+            eip1497.fileTypeExtension = extension; 
+            eip1497.name = name; 
+            eip1497.description = shortDescription; 
+            // hash 
+            eip1497.selfHash = objectHash.sha1(eip1497);
+
+            return eip1497; 
+        }
+    
+        function submitToDispute() {
+            // collect selected evidence ids 
+
+            // submit to EVM 
+        }
+
+        function ge(id) {
+            return document.getElementById(id);
+        }
+
+        function ce(element) {
+            return document.createElement(element);
+        }
+
+        function text(txt) {
+            return document.createTextNode(txt);
+        }
+
+
+
+    </script>
+</body>
+
+</html>
