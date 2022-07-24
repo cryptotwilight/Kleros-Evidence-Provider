@@ -329,6 +329,8 @@
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
     <script src="assets/js/autoconnect.js"></script>
+    <script src="assets/abi/i_evidence_locker_abi.js"></script>
+    <script src="assets/abi/i_kleros_evidence_provider_abi.js"></script>
     <script> 
         const createLockerButton = ge("create_locker_button");
         const lockerAddressDisplay = ge("locker_address_display");
@@ -345,7 +347,7 @@
         const addEvidenceButton = ge("add_evidence_button"); 
         
         var iKerlosEvidenceProviderContract;
-        var iKerlosEvicenceProviderAddress
+        var iKerlosEvicenceProviderAddress = "0xB245157dcB02B6883a7C423a574bF4Dd348d0137";
         var iEvidenceLockerContract; 
         var iEvidenceLockerAddress; 
 
