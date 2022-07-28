@@ -115,7 +115,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
-                        <a href="#" id="create_locker_button" class="btn btn-primary">Get Locker</a>
+                        <a href="#" id="get_locker_button" class="btn btn-primary">Get Locker</a>
                         <span id="locker_address_display"></span>
                     </div>
                 </div>
@@ -144,108 +144,21 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody >
-                                                    <tr>
-                                                        
-                                                        <td>Airi Satou</td>
-                                                        <td>   <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="o1">
-                                                            <label class="custom-control-label" for="o1"></label>
-                                                        
-                                                        </div>
-                                                        </td>
-                                                        <td>Accountant</td>
-                                                        <td>Tokyo</td>
-                                                        <td>33</td>
-                                                        <td>2008/11/28</td>
-                                                        
-                                                        <td>$162,700</td>
-                                                    </tr>
-                                                    <tr>
-                                                        
-                                                        <td>Angelica Ramos</td>
-                                                        <td>   <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="o2">
-                                                            <label class="custom-control-label" for="o2"></label>
-                                                        
-                                                        </div>
-                                                        </td>
-                                                        <td>Chief Executive Officer (CEO)</td>
-                                                        <td>London</td>
-                                                        <td>47</td>
-                                                        <td>2009/10/09</td>
-                                                        <td>$1,200,000</td>
-                                                    </tr>
-                                                    <tr>
-                                                    
-                                                        <td>Ashton Cox</td>
-                                                        <td>   <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="o3">
-                                                            <label class="custom-control-label" for="o3"></label>
-                                                        
-                                                        </div>
-                                                        </td>
-                                                        <td>Junior Technical Author</td>
-                                                        <td>San Francisco</td>
-                                                        <td>66</td>
-                                                        <td>2009/01/12</td>
-                                                        <td>$86,000</td>
-                                                    </tr>
-                                                    <tr>
-                                                
-                                                        <td>Bradley Greer</td>
-                                                        <td>   <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="o4">
-                                                            <label class="custom-control-label" for="o4"></label>
-                                                        
-                                                        </div>
-                                                        </td>
-                                                        <td>Software Engineer</td>
-                                                        <td>London</td>
-                                                        <td>41</td>
-                                                        <td>2012/10/13</td>
-                                                        <td>$132,000</td>
-                                                    </tr>
-                                                    <tr>
-                                                    
-                                                        <td>Brenden Wagner</td>
-                                                        <td>   <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="o5">
-                                                            <label class="custom-control-label" for="o5"></label>
-                                                        
-                                                        </div>
-                                                        </td>
-                                                        <td>Software Engineer</td>
-                                                        <td>San Francisco</td>
-                                                        <td>28</td>
-                                                        <td>2011/06/07</td>
-                                                        <td>$206,850</td>
-                                                    </tr>
-                                                    <tr>
-                                                        
-                                                        <td>Caesar Vance</td>
-                                                        <td>   <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="o6">
-                                                            <label class="custom-control-label" for="o6"></label>
-                                                            
-                                                        </div>
-                                                        </td>
-                                                        <td>Pre-Sales Support</td>
-                                                        <td>New York</td>
-                                                        <td>29</td>
-                                                        <td>2011/12/12</td>
-                                                        <td>$106,450</td>
-                                                    </tr>
+                                                 
                                                 
                                                 </tbody>
-                                            </table>    
-                                        
+                                            </table>                                            
                                             <div class="form-group">
-                                                <label for="metaEvidenceId">Enter MetaEvidence Id</label>
+                                                <label for="metaEvidenceId">Enter Meta Evidence Id</label>
                                                 <input type="text" class="form-control" id="metaEvidenceId"  placeholder="Enter meta evidence id">                                            
                                             </div>
                                             <div class="form-group">
                                                 <label for="party">Enter Party</label>
                                                 <input type="text" class="form-control" id="dispute_party"  placeholder="Enter party">                                            
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="party">Enter Arbitrable</label>
+                                                <input type="text" class="form-control" id="arbitrable"  placeholder="Enter arbitrable">                                            
                                             </div>
                                             <a href="#" id="submit_to_dispute" class="btn btn-danger">Submit to Dispute</a> 
                                         </div>
@@ -261,6 +174,7 @@
                                 <div class="card mt-5">
                                     <div class="card-body">
                                         <h4 class="header-title">Add Evidence</h4>
+                                        <span id="add_evidence_message_display"></span>
                                         <form action="#">
                                             <div class="form-group">
                                                 <label for="submitter">Enter Submitter</label>
@@ -278,6 +192,10 @@
                                             <div class="form-group">
                                                 <label for="evidence_search_terms">Evidence Search Terms</label>
                                                 <input type="text" class="form-control" id="evidence_search_terms" placeholder="Enter evidence search terms">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="evidence_search_terms">Evidence Tags</label>
+                                                <input type="text" class="form-control" id="evidence_tags" placeholder="Enter evidence tags">
                                             </div>
                                             <div class="input-group mb-3">
                                                 Upload Evidence
@@ -328,43 +246,158 @@
     <!-- others plugins -->
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
-    <script src="assets/js/autoconnect.js"></script>
+
+    <!-- ABI -->
     <script src="assets/abi/i_evidence_locker_abi.js"></script>
     <script src="assets/abi/i_kleros_evidence_provider_abi.js"></script>
+
+
+    <script src="assets/js/autoconnect.js"></script>
     <script> 
-        const createLockerButton = ge("create_locker_button");
+        const getLockerButton = ge("get_locker_button");
+        getLockerButton.addEventListener("click", getLocker);
+
         const lockerAddressDisplay = ge("locker_address_display");
-        const evidenceTable = ge("datatable2");
+        const evidenceTable = ge("dataTable2");
         const metaEvidenceId = ge("metaEvidenceId"); 
         const disputeParty = ge("dispute_party");
         const submitToDisputButton = ge("submit_to_dispute");
 
-        const evidenceSubmitter = ge("submitter");
-        const evidenceTitle = ge("evidence_title");
-        const evidenceShortDescription = ge("evidence_short_description");
-        const evidenceSearchTerms = ge("evidence_search_terms");
-        const evidenceUploadFile = ge("evidence_upload_file");
-        const addEvidenceButton = ge("add_evidence_button"); 
+        const evidenceSubmitter         = ge("submitter");
+        const evidenceTitle             = ge("evidence_title");
+        const evidenceShortDescription  = ge("evidence_short_description");
+        const evidenceSearchTerms       = ge("evidence_search_terms");
+        const evidenceTags              = ge("evidence_tags");
+        const evidenceUploadFile        = ge("evidence_upload_file");
+        const addEvidenceButton         = ge("add_evidence_button"); 
+        addEvidenceButton.addEventListener("click", addEvidence);
+        const addEvidenceMessageDisplay = ge("add_evidence_message_display");
         
         var iKerlosEvidenceProviderContract;
-        var iKerlosEvicenceProviderAddress = "0xB245157dcB02B6883a7C423a574bF4Dd348d0137";
+        var iKerlosEvicenceProviderAddress = "0x1557cDe0B7FC93C6Ab1434F18b296E64eC9B686f";
         var iEvidenceLockerContract; 
         var iEvidenceLockerAddress; 
 
         async function  configureCoreContracts() {
-            iKerlosEvidenceProviderContract = new web3.eth.Contract(iKerlosEvidenceProviderAbi, iKerlosEvicenceProviderAddress);
+            iKerlosEvidenceProviderContract = new web3.eth.Contract(iKlerosEvidenceProviderAbi, iKerlosEvicenceProviderAddress);
+        }
+
+        async function loadPageData() { 
+            console.log("loaded page data");            
+        }
+
+        function getAvailableEvidence() { 
+            console.log(evidenceTable);
+
+            evidenceTable.tBodies[0].innerHTML = ""; 
+            iEvidenceLockerContract.methods.getAvailableEvidence().call({from : account})
+            .then(function(response){
+                console.log(response);
+                var evidence = response; 
+                buildAvailableEvidenceTable(evidence);
+            })
+            .catch(function(err){
+                console.log(err);
+            })
+        }
+
+        function buildAvailableEvidenceTable(evidence) {
+            for(var x = 0; x < evidence.length; x++) {
+                var e = evidence[x];
+                
+                var tbody = evidenceTable.getElementsByTagName('tbody')[0];
+                var row = tbody.insertRow();
+                var titleCell = row.insertCell();
+                var a = ce("a");
+                a.setAttribute("href", "http://ipfs.io/ipfs/"+e.content);
+                a.setAttribute("target", "_blank");
+                a.append(text(e.title));
+                titleCell.append(a);
+
+                var checkboxCell = row.insertCell(); 
+    
+                var d = ce("div");
+                d.setAttribute("class","custom-control custom-checkbox");
+                var checkbox = ce("input");
+                checkbox.setAttribute("type", "checkbox");
+                checkbox.setAttribute("class","custom-control-input");
+                checkbox.setAttribute("id", e.id);
+                d.append(checkbox);
+                var label = ce("label");
+                label.setAttribute("class","custom-control-label");
+                label.setAttribute("for",e.id);
+                d.append(label);
+                checkboxCell.append(d);
+
+                var submitterCell = row.insertCell(); 
+                submitterCell.append(text(e.sumbitter));
+
+                var tagsCell = row.insertCell(); 
+                tagsCell.append(text(e.searchTerms));
+
+                var caseCountCell = row.insertCell(); 
+                populateDisputes(caseCountCell, e.id);
+
+                var addDateCell = row.insertCell(); 
+                addDateCell.append(text(formatDate(e.dateAdded)));
+
+            }
+        }
+
+        function formatDate(d) {
+            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            var today  = new Date(d*1000);
+            return today.toLocaleDateString("en-US", options); 
+        }
+
+        async function populateDisputes(caseCountCell, id) {
+            iEvidenceLockerContract.methods.getDisputes(id).call({from : account})
+            .then(function(response){
+                console.log(response);
+                caseCountCell.append(text(response.length));
+            })
+            .catch(function(err){
+                console.log(err);
+            })
+        }
+
+        function getLocker() { 
             iKerlosEvidenceProviderContract.methods.getLocker().call({from : account})
             .then(function(response){
                 console.log(response);
-                iEvidenceLockerAddress = response;
-                lockerAddressDisplay.innerHTML = "Evidence Locker Address: "+ iEvidenceLockerAddress; 
-                iEvidenceLockerContract = new web3.eth.Contract(iEvidenceLockerAbi, iEvidenceLockerAddress);                
+                if(response === "0x0000000000000000000000000000000000000000") {
+                    console.log("creating locker");
+                    return createLocker(); 
+                }
+                else { 
+                    iEvidenceLockerAddress = response;
+                    loadData();
+                }
             })
             .catch(function(err){
                 console.log(err);
                 lockerAddressDisplay.innerHTML = "Create Locker to Begin";
             });
+            
         }
+
+        function loadData(){
+            lockerAddressDisplay.innerHTML = "Evidence Locker Address: "+ iEvidenceLockerAddress; 
+            iEvidenceLockerContract = new web3.eth.Contract(iEvidenceLockerAbi, iEvidenceLockerAddress);  
+            getAvailableEvidence();
+        }
+
+        function createLocker() { 
+            iKerlosEvidenceProviderContract.methods.createLocker().send({from : account})
+            .then(function(response){
+                console.log(response);
+                loadData(); 
+            })
+            .catch(function(err){
+                console.log(err);
+            });
+        }
+
 
         function addEvidence() { 
             //upload file to ipfs 
@@ -373,15 +406,24 @@
                     .then(function(res){
                             console.log(res);
                             //build EIP1497 compliant evidence json
-                            var ipfsHash = res; 
+                            var ipfsHash = res[0].hash; 
                             var eip1497 = buildEIP1497(ipfsHash, evidenceUploadFile.files[0].name, evidenceUploadFile.files[0].type, evidenceShortDescription.value);
                             var str = JSON.stringify(eip1497);
                             console.log(str);
                             ipfs.add(str) 
-                            .then(function(res){
-                                    console.log(res); 
+                            .then(function(res2){
+                                    console.log(res2); 
+                                    evidenceIpfsHash = res2[0].hash; 
                                     // submit to EVM 
+                                    iEvidenceLockerContract.methods.addEvidence(evidenceSubmitter.value, evidenceTitle.value, evidenceShortDescription.value, evidenceIpfsHash, getArray(evidenceSearchTerms.value), getArray(evidenceTags.value) ).send({from : account})
+                                    .then(function(response){
+                                        console.log(response);
+                                        addEvidenceMessageDisplay.innerHTML = response.blockHash; 
+                                    })
+                                    .catch(function(err){
+                                        console.log(err);
 
+                                    });
                             })
                             .catch(function(err){
                                     console.log(err);
@@ -390,7 +432,7 @@
                     .catch(function(err){
                         console.log(err);
                     });
-            // submit to EVM 
+                    
 
             // refresh table; 
         }
@@ -413,6 +455,10 @@
             // collect selected evidence ids 
 
             // submit to EVM 
+        }
+
+        function getArray(x) {
+            return x.split(",");
         }
 
         function ge(id) {
